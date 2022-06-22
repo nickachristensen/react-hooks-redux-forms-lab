@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { bandAdded } from "./bandsSlice"
 
 
-function BandInput() {
+
+function BandInput({ onBandSubmit }) {
   const [name, setName] = useState('');
-  const dispatch = useDispatch();
+  
 
   function handleChange(event) {
     setName(event.target.value);
@@ -13,10 +12,9 @@ function BandInput() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    dispatch(bandAdded(name));
-    setName('');
+    onBandSubmit(name);
+    setName("")
   }
-
 
   return (
     <div>
